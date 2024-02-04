@@ -73,3 +73,5 @@ crashlytics-build.properties
 
 # Ignore the vscode settings files
 .vscode/settings.json
+.config/dotnet-tools.json
+.DS_Store
