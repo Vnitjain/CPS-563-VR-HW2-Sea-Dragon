@@ -22,31 +22,18 @@ public class SeaDragonMovement : MonoBehaviour
     {
         JumpUpdates();
         MovementUpdates();
-        // AttackUpdates();
+        AttackUpdates();
     }
     void MovementUpdates()
     {
-        if (dragonAnimator.GetFloat("Vertical") == 0 && dragonAnimator.GetFloat("Horizontal") == 0)
-        {
-            dragonAnimator.SetBool("Stand", true);
-        }
-        if (dragonAnimator.GetFloat("Vertical") != 0 || dragonAnimator.GetFloat("Horizontal") != 0)
-        {
-            dragonAnimator.SetBool("Stand", false);
-        }
+        dragonAnimator.SetBool("Stand", dragonAnimator.GetFloat("Vertical") == 0 && dragonAnimator.GetFloat("Horizontal") == 0);
         dragonAnimator.SetFloat("Vertical", SeaDragonMain.verticalInput);
         dragonAnimator.SetFloat("Horizontal", SeaDragonMain.horizontalInput);
     }
     void JumpUpdates()
     {
-        if (SeaDragonMain.isJumpKeyPressed)
-        {
-            dragonAnimator.SetBool("Jump", true);
-        }
-        else
-        {
-            dragonAnimator.SetBool("Jump", false);
-        }
+        dragonAnimator.SetBool("Jump", SeaDragonMain.isJumpKeyPressed);
+        dragonAnimator.SetBool("Grounded", SeaDragonMain.isGrounded);
     }
     void AttackUpdates()
     {
@@ -54,7 +41,6 @@ public class SeaDragonMovement : MonoBehaviour
         {
             dragonAnimator.SetBool("Attack2", true);
             dragonAnimator.SetInteger("DragoInt", 1);
-            dragonAnimator.SetBool("Grounded", true);
             dragonAnimator.SetBool("Attack1", true);
             dragonAnimator.SetInteger("ActionID", -1);
             Debug.Log("Fire1 pressed");
@@ -64,7 +50,6 @@ public class SeaDragonMovement : MonoBehaviour
             Debug.Log("Fire1 unpressed");
             dragonAnimator.SetBool("Attack2", false);
             dragonAnimator.SetInteger("DragoInt", 0);
-            dragonAnimator.SetBool("Grounded", true);
             dragonAnimator.SetBool("Attack1", false);
             dragonAnimator.SetInteger("ActionID", -1);
             dragonAnimator.SetBool("Attack1", false);

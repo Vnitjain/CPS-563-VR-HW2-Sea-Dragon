@@ -8,6 +8,7 @@ public class SeaDragonMain : MonoBehaviour
 {
     public static bool isJumpKeyPressed;
     public static bool isFire1Pressed;
+    public static bool isGrounded;
     private Rigidbody dragonRigidBodyObject;
     public float jumpStrength;
     private bool jumpFlag;
@@ -25,6 +26,7 @@ public class SeaDragonMain : MonoBehaviour
         {
             isJumpKeyPressed = true;
             jumpFlag = false;
+            isGrounded = false;
         }
         if (Input.GetButton("Fire1"))
         {
@@ -51,6 +53,7 @@ public class SeaDragonMain : MonoBehaviour
         if (collision.gameObject.layer == 3)
         {
             jumpFlag = true;
+            isGrounded = true;
         }
         if (collision.gameObject.layer == 7)
         {
