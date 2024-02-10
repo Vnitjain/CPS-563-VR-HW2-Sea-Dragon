@@ -22,7 +22,7 @@ public class SeaDragonMovement : MonoBehaviour
     {
         JumpUpdates();
         MovementUpdates();
-        AttackUpdates();
+        // AttackUpdates();
     }
     void MovementUpdates()
     {
