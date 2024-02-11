@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5359439941428532136}
   - component: {fileID: 8095528444330421398}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Self
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
