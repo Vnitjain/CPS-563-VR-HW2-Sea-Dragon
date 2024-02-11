@@ -8,7 +8,6 @@ public class SeaDragonMovement : MonoBehaviour
     Animator dragonAnimator;
     Rigidbody dragonRigidBody;
 
-    // Start is called before the first frame update
     void Start()
     {
         dragonAnimator = GetComponent<Animator>();
@@ -17,7 +16,6 @@ public class SeaDragonMovement : MonoBehaviour
         dragonAnimator.SetBool("Stand", true);
     }
 
-    // Update is called once per frame
     void Update()
     {
         JumpUpdates();
@@ -40,7 +38,7 @@ public class SeaDragonMovement : MonoBehaviour
         if (SeaDragonMain.isFire1Pressed)
         {
             dragonAnimator.SetBool("Attack2", true);
-            dragonAnimator.SetInteger("DragoInt", 1);
+            dragonAnimator.SetInteger("DragoInt", 2);
             dragonAnimator.SetBool("Attack1", true);
             dragonAnimator.SetInteger("ActionID", -1);
         }
