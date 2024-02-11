@@ -43,16 +43,15 @@ public class SeaDragonMovement : MonoBehaviour
             dragonAnimator.SetInteger("DragoInt", 1);
             dragonAnimator.SetBool("Attack1", true);
             dragonAnimator.SetInteger("ActionID", -1);
-            Debug.Log("Fire1 pressed");
         }
         else
         {
-            Debug.Log("Fire1 unpressed");
             dragonAnimator.SetBool("Attack2", false);
             dragonAnimator.SetInteger("DragoInt", 0);
             dragonAnimator.SetBool("Attack1", false);
             dragonAnimator.SetInteger("ActionID", -1);
             dragonAnimator.SetBool("Attack1", false);
         }
+
     }
 }
