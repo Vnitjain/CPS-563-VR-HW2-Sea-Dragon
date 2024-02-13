@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 
 //photon id : caded358-3968-4e21-957b-4e6d80e49f95
-public class SeaDragonMain : MonoBehaviour
+public class SeaDragonMain : MonoBehaviourPunCallbacks
 {
     public static bool isJumpKeyPressed;
     public static bool isFire1Pressed;
@@ -15,15 +15,27 @@ public class SeaDragonMain : MonoBehaviour
     public static float verticalInput;
     public static float horizontalInput;
     PhotonView view;
+
     void Start()
     {
         dragonRigidBodyObject = GetComponent<Rigidbody>();
         isJumpKeyPressed = false;
         jumpFlag = true;
         view = GetComponent<PhotonView>();
+
+        // Check if this is the local player's object
+        if (!view.IsMine)
+        {
+            // Disable control if this is not the local player's object
+            enabled = false;
+        }
     }
+
     void Update()
     {
+        if (!view.IsMine)
+            return;
+
         if (Input.GetButton("Jump") && jumpFlag)
         {
             isJumpKeyPressed = true;
@@ -40,6 +52,9 @@ public class SeaDragonMain : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (!view.IsMine)
+            return;
+
         dragonRigidBodyObject.velocity = new Vector3(horizontalInput * 10, dragonRigidBodyObject.velocity.y, verticalInput * 10);
         if (isJumpKeyPressed)
         {
@@ -63,6 +78,5 @@ public class SeaDragonMain : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
-
     }
 }
