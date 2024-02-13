@@ -2208,6 +2208,7 @@ GameObject:
   - component: {fileID: 4536340455481529882}
   - component: {fileID: 7129247638583019206}
   - component: {fileID: 7596518527651209067}
+  - component: {fileID: 830353129142798770}
   m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2325,6 +2326,18 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &830353129142798770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8974636247024400946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b606ab00ff3e64d82a36aa34736101d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2840536965141002422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2365,10 +2378,6 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 2485868447356972154}
-    - target: {fileID: 2406424323654621815, guid: d6fda5c8ac6b54c5bbc260f856b2c52e, type: 3}
-      propertyPath: m_YAxis.Value
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2705045785308611687, guid: d6fda5c8ac6b54c5bbc260f856b2c52e, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -2420,18 +2429,6 @@ PrefabInstance:
     - target: {fileID: 2910246444327066360, guid: d6fda5c8ac6b54c5bbc260f856b2c52e, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.0052995314
-      objectReference: {fileID: 0}
-    - target: {fileID: 3447989029994269231, guid: d6fda5c8ac6b54c5bbc260f856b2c52e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3447989029994269231, guid: d6fda5c8ac6b54c5bbc260f856b2c52e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3447989029994269231, guid: d6fda5c8ac6b54c5bbc260f856b2c52e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.20000005
       objectReference: {fileID: 0}
     - target: {fileID: 3447989029994269231, guid: d6fda5c8ac6b54c5bbc260f856b2c52e, type: 3}
       propertyPath: m_LocalPosition.x
