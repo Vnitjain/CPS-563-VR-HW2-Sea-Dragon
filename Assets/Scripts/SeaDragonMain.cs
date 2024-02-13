@@ -23,51 +23,46 @@ public class SeaDragonMain : MonoBehaviour
         view = GetComponent<PhotonView>();
     }
     void Update()
-    {   if(view.IsMine)
+    {
+        if (Input.GetButton("Jump") && jumpFlag)
         {
-            if (Input.GetButton("Jump") && jumpFlag)
-            {
-                isJumpKeyPressed = true;
-                jumpFlag = false;
-                isGrounded = false;
-            }
-            if (Input.GetButton("Fire1"))
-            {
-                isFire1Pressed = true;
-            }
-            verticalInput = Input.GetAxis("Vertical");
-            horizontalInput = Input.GetAxis("Horizontal");
+            isJumpKeyPressed = true;
+            jumpFlag = false;
+            isGrounded = false;
         }
+        if (Input.GetButton("Fire1"))
+        {
+            isFire1Pressed = true;
+        }
+        verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
+
     }
     void FixedUpdate()
     {
-        if(view.IsMine)
+        dragonRigidBodyObject.velocity = new Vector3(horizontalInput * 10, dragonRigidBodyObject.velocity.y, verticalInput * 10);
+        if (isJumpKeyPressed)
         {
-            dragonRigidBodyObject.velocity = new Vector3(horizontalInput * 10, dragonRigidBodyObject.velocity.y, verticalInput * 10);
-            if (isJumpKeyPressed)
-            {
-                dragonRigidBodyObject.AddForce(Vector3.up * jumpStrength, ForceMode.VelocityChange);
-                isJumpKeyPressed = false;
-            }
-            if (isFire1Pressed)
-            {
-                isFire1Pressed = false;
-            }
+            dragonRigidBodyObject.AddForce(Vector3.up * jumpStrength, ForceMode.VelocityChange);
+            isJumpKeyPressed = false;
+        }
+        if (isFire1Pressed)
+        {
+            isFire1Pressed = false;
         }
     }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if(view.IsMine)
+        if (collision.gameObject.layer == 3)
         {
-            if (collision.gameObject.layer == 3)
-            {
-                jumpFlag = true;
-                isGrounded = true;
-            }
-            if (collision.gameObject.layer == 7)
-            {
-                Destroy(collision.gameObject);
-            }
+            jumpFlag = true;
+            isGrounded = true;
         }
+        if (collision.gameObject.layer == 7)
+        {
+            Destroy(collision.gameObject);
+        }
+
     }
 }

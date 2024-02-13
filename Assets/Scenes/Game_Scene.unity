@@ -59216,7 +59216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1250991442
 AudioListener:
   m_ObjectHideFlags: 0
@@ -59284,13 +59284,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250991441}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40149805, y: -0, z: -0, w: 0.9158599}
-  m_LocalPosition: {x: -65.2226, y: 157, z: 102.43}
+  m_LocalRotation: {x: 0.22495107, y: 0, z: 0, w: 0.9743701}
+  m_LocalPosition: {x: 33, y: 48, z: -188}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 47.344, y: 0, z: 0}
+  m_Father: {fileID: 1280576043}
+  m_LocalEulerAnglesHint: {x: 26, y: 0, z: 0}
 --- !u!1001 &1256989733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69326,7 +69326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995ffb02ead21ac4a9961a93166f1fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 6941962725839508135, guid: 09d2ddef6a80840dfb3b2db1340d2cde, type: 3}
+  playerPrefab: {fileID: 2916919833202865989, guid: a0b80023edf3844cc8d32a17da6919b1, type: 3}
   minX: -38
   maxX: 0
   minY: 13
@@ -69340,10 +69340,11 @@ Transform:
   m_GameObject: {fileID: 1280576041}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -65.2226, y: 8.059079, z: 107.93747}
+  m_LocalPosition: {x: -65.2226, y: 32.5, z: 107.93747}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1250991444}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1291927572
@@ -120351,4 +120352,3 @@ SceneRoots:
   - {fileID: 26301776}
   - {fileID: 618686656}
   - {fileID: 1280576043}
-  - {fileID: 1250991444}
