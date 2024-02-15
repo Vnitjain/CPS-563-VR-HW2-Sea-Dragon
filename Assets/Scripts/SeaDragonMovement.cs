@@ -41,6 +41,7 @@ public class SeaDragonMovement : MonoBehaviourPunCallbacks
         dragonAnimator.SetBool("Stand", dragonAnimator.GetFloat("Vertical") == 0 && dragonAnimator.GetFloat("Horizontal") == 0);
         dragonAnimator.SetFloat("Vertical", SeaDragonMain.verticalInput);
         dragonAnimator.SetFloat("Horizontal", SeaDragonMain.horizontalInput);
+        dragonAnimator.SetBool("Swim", SeaDragonMain.inWater);
     }
 
     void JumpUpdates()
