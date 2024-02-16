@@ -8,8 +8,7 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
 {
     public static bool isJumpKeyPressed;
     public static bool isFire1Pressed;
-    public static bool isGrounded;
-    public static bool inWater;
+    public static bool shiftPressed;
 
     private Rigidbody dragonRigidBodyObject;
     public float jumpStrength;
@@ -23,7 +22,7 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         dragonRigidBodyObject = GetComponent<Rigidbody>();
         isJumpKeyPressed = false;
         jumpFlag = true;
-        inWater = false;
+        shiftPressed = false;
         view = GetComponent<PhotonView>();
 
         // Check if this is the local player's object
@@ -43,15 +42,15 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         {
             isJumpKeyPressed = true;
             jumpFlag = false;
-            isGrounded = false;
         }
         if (Input.GetButton("Fire1"))
         {
             isFire1Pressed = true;
         }
+
+        shiftPressed = Input.GetKey(KeyCode.LeftShift);
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
-
     }
     void FixedUpdate()
     {
@@ -75,16 +74,10 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         if (collision.gameObject.layer == 3)
         {
             jumpFlag = true;
-            isGrounded = true;
-            inWater = false;
         }
         if (collision.gameObject.layer == 7)
         {
             Destroy(collision.gameObject);
-        }
-        if (collision.gameObject.layer == 4)
-        {
-            inWater = true;
         }
     }
 }

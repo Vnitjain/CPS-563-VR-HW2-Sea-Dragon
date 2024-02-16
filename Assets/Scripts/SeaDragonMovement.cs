@@ -6,14 +6,10 @@ using Photon.Pun;
 public class SeaDragonMovement : MonoBehaviourPunCallbacks
 {
     Animator dragonAnimator;
-    Rigidbody dragonRigidBody;
 
     void Start()
     {
         dragonAnimator = GetComponent<Animator>();
-        dragonRigidBody = GetComponent<Rigidbody>();
-
-        dragonAnimator.SetBool("Stand", true);
 
         // Check if this is the local player's object
         if (!photonView.IsMine)
@@ -38,13 +34,11 @@ public class SeaDragonMovement : MonoBehaviourPunCallbacks
         if (!photonView.IsMine)
             return;
 
-        dragonAnimator.SetBool("Stand", dragonAnimator.GetFloat("Vertical") == 0 && dragonAnimator.GetFloat("Horizontal") == 0);
         dragonAnimator.SetBool("isWalkingVerticalForward", SeaDragonMain.verticalInput > 0);
         dragonAnimator.SetBool("isWalkingVerticalBack", SeaDragonMain.verticalInput < 0);
         dragonAnimator.SetBool("isWalkingHorizontalLeft", SeaDragonMain.horizontalInput < 0);
         dragonAnimator.SetBool("isWalkingHorizontalRight", SeaDragonMain.horizontalInput > 0);
-
-        dragonAnimator.SetBool("Swim", SeaDragonMain.inWater);
+        dragonAnimator.SetBool("isShiftPressed", SeaDragonMain.shiftPressed);
     }
 
     void JumpUpdates()
@@ -52,8 +46,7 @@ public class SeaDragonMovement : MonoBehaviourPunCallbacks
         if (!photonView.IsMine)
             return;
 
-        dragonAnimator.SetBool("Jump", SeaDragonMain.isJumpKeyPressed);
-        dragonAnimator.SetBool("Grounded", SeaDragonMain.isGrounded);
+        dragonAnimator.SetBool("isJumpPressed", SeaDragonMain.isJumpKeyPressed);
     }
 
     void AttackUpdates()
