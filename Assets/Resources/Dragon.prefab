@@ -605,6 +605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2258283935822054726}
   - component: {fileID: 7484346556355657829}
+  - component: {fileID: 3686181569684162722}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -735,6 +736,19 @@ MonoBehaviour:
   - {fileID: 3236159020858173506}
   - {fileID: 6582804376752325192}
   - {fileID: 5678285207356369038}
+--- !u!114 &3686181569684162722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2324544746236901307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1ebd59f37f541a49ba2abf557a0f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragonCam: {fileID: 0}
 --- !u!1 &2447831573596104641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,7 +1270,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3226096264759659166}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22962745, y: -0.032162145, z: 0.0075924513, w: 0.97271746}
+  m_LocalRotation: {x: 0.22962745, y: -0.032162182, z: 0.00759246, w: 0.97271746}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2180,7 +2194,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6869444185577030269}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21189621, y: -0.032294948, z: 0.007006188, w: 0.9767333}
+  m_LocalRotation: {x: 0.2118962, y: -0.03229491, z: 0.0070061795, w: 0.9767333}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
