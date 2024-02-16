@@ -58,7 +58,7 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         if (!view.IsMine)
             return;
 
-        dragonRigidBodyObject.velocity = new Vector3(horizontalInput * 10, dragonRigidBodyObject.velocity.y, verticalInput * 10);
+        dragonRigidBodyObject.velocity = new Vector3(horizontalInput * 100, dragonRigidBodyObject.velocity.y, verticalInput * 100);
         if (isJumpKeyPressed)
         {
             dragonRigidBodyObject.AddForce(Vector3.up * jumpStrength, ForceMode.VelocityChange);

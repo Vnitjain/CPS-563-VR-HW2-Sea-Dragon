@@ -39,8 +39,11 @@ public class SeaDragonMovement : MonoBehaviourPunCallbacks
             return;
 
         dragonAnimator.SetBool("Stand", dragonAnimator.GetFloat("Vertical") == 0 && dragonAnimator.GetFloat("Horizontal") == 0);
-        dragonAnimator.SetFloat("Vertical", SeaDragonMain.verticalInput);
-        dragonAnimator.SetFloat("Horizontal", SeaDragonMain.horizontalInput);
+        dragonAnimator.SetBool("isWalkingVerticalForward", SeaDragonMain.verticalInput > 0);
+        dragonAnimator.SetBool("isWalkingVerticalBack", SeaDragonMain.verticalInput < 0);
+        dragonAnimator.SetBool("isWalkingHorizontalLeft", SeaDragonMain.horizontalInput < 0);
+        dragonAnimator.SetBool("isWalkingHorizontalRight", SeaDragonMain.horizontalInput > 0);
+
         dragonAnimator.SetBool("Swim", SeaDragonMain.inWater);
     }
 
