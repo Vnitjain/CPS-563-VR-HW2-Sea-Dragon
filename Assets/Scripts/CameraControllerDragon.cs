@@ -13,9 +13,4 @@ public class CameraControllerDragon : MonoBehaviourPunCallbacks
             Destroy(dragonCam);
         }
     }
-
-    void Update()
-    {
-
-    }
 }
