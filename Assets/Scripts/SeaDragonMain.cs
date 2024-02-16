@@ -9,6 +9,8 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
     public static bool isJumpKeyPressed;
     public static bool isFire1Pressed;
     public static bool shiftPressed;
+    public static bool isCapsLockOn;
+
 
     private Rigidbody dragonRigidBodyObject;
     public float jumpStrength;
@@ -23,12 +25,11 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         isJumpKeyPressed = false;
         jumpFlag = true;
         shiftPressed = false;
+        isCapsLockOn = false;
         view = GetComponent<PhotonView>();
 
-        // Check if this is the local player's object
         if (!view.IsMine)
         {
-            // Disable control if this is not the local player's object
             enabled = false;
         }
     }
@@ -47,7 +48,6 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         {
             isFire1Pressed = true;
         }
-
         shiftPressed = Input.GetKey(KeyCode.LeftShift);
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");

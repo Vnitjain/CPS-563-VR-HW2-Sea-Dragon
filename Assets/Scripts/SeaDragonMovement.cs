@@ -10,11 +10,8 @@ public class SeaDragonMovement : MonoBehaviourPunCallbacks
     void Start()
     {
         dragonAnimator = GetComponent<Animator>();
-
-        // Check if this is the local player's object
         if (!photonView.IsMine)
         {
-            // Disable control if this is not the local player's object
             enabled = false;
         }
     }
@@ -23,17 +20,21 @@ public class SeaDragonMovement : MonoBehaviourPunCallbacks
     {
         if (!photonView.IsMine)
             return;
-
         JumpUpdates();
         MovementUpdates();
         AttackUpdates();
+        FlyUpdates();
+    }
+
+    void FlyUpdates()
+    {
+        dragonAnimator.SetBool("isCapsLockOn", SeaDragonMain.isCapsLockOn);
     }
 
     void MovementUpdates()
     {
         if (!photonView.IsMine)
             return;
-
         dragonAnimator.SetBool("isWalkingVerticalForward", SeaDragonMain.verticalInput > 0);
         dragonAnimator.SetBool("isWalkingVerticalBack", SeaDragonMain.verticalInput < 0);
         dragonAnimator.SetBool("isWalkingHorizontalLeft", SeaDragonMain.horizontalInput < 0);
@@ -45,7 +46,6 @@ public class SeaDragonMovement : MonoBehaviourPunCallbacks
     {
         if (!photonView.IsMine)
             return;
-
         dragonAnimator.SetBool("isJumpPressed", SeaDragonMain.isJumpKeyPressed);
     }
 
@@ -53,21 +53,6 @@ public class SeaDragonMovement : MonoBehaviourPunCallbacks
     {
         if (!photonView.IsMine)
             return;
-
-        if (SeaDragonMain.isFire1Pressed)
-        {
-            dragonAnimator.SetBool("Attack2", true);
-            dragonAnimator.SetInteger("DragoInt", 2);
-            dragonAnimator.SetBool("Attack1", true);
-            dragonAnimator.SetInteger("ActionID", -1);
-        }
-        else
-        {
-            dragonAnimator.SetBool("Attack2", false);
-            dragonAnimator.SetInteger("DragoInt", 0);
-            dragonAnimator.SetBool("Attack1", false);
-            dragonAnimator.SetInteger("ActionID", -1);
-            dragonAnimator.SetBool("Attack1", false);
-        }
+        dragonAnimator.SetBool("isAttack1Pressed", SeaDragonMain.isFire1Pressed);
     }
 }
