@@ -9,7 +9,9 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
     public static bool isJumpKeyPressed;
     public static bool isFire1Pressed;
     public static bool shiftPressed;
-    public static bool isCapsLockOn;
+    public static bool isQPressed;
+    public static bool isEPressed;
+    public static bool isEating;
 
 
     private Rigidbody dragonRigidBodyObject;
@@ -25,7 +27,9 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         isJumpKeyPressed = false;
         jumpFlag = true;
         shiftPressed = false;
-        isCapsLockOn = false;
+        isQPressed = false;
+        isEPressed = false;
+        isEating = false;
         view = GetComponent<PhotonView>();
 
         if (!view.IsMine)
@@ -48,6 +52,8 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         {
             isFire1Pressed = true;
         }
+        isEPressed = Input.GetKeyDown(KeyCode.E);
+        isQPressed = Input.GetKeyDown(KeyCode.Q);
         shiftPressed = Input.GetKey(KeyCode.LeftShift);
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
@@ -77,7 +83,9 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         }
         if (collision.gameObject.layer == 7)
         {
+            isEating = true;
             Destroy(collision.gameObject);
+            isEating = false;
         }
     }
 }

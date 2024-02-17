@@ -9,26 +9,31 @@ public class SeaDragonMovement : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        dragonAnimator = GetComponent<Animator>();
         if (!photonView.IsMine)
         {
             enabled = false;
         }
+        dragonAnimator = GetComponent<Animator>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!photonView.IsMine)
             return;
         JumpUpdates();
         MovementUpdates();
         AttackUpdates();
+        PowerUpUpdated();
         FlyUpdates();
+    }
+
+    void PowerUpUpdated()
+    {
+        dragonAnimator.SetBool("isEating", SeaDragonMain.isEating);
     }
 
     void FlyUpdates()
     {
-        dragonAnimator.SetBool("isCapsLockOn", SeaDragonMain.isCapsLockOn);
     }
 
     void MovementUpdates()
@@ -54,5 +59,7 @@ public class SeaDragonMovement : MonoBehaviourPunCallbacks
         if (!photonView.IsMine)
             return;
         dragonAnimator.SetBool("isAttack1Pressed", SeaDragonMain.isFire1Pressed);
+        dragonAnimator.SetBool("isQPressed", SeaDragonMain.isQPressed);
+        dragonAnimator.SetBool("isEPressed", SeaDragonMain.isEPressed);
     }
 }
