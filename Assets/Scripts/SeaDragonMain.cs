@@ -52,8 +52,8 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         {
             isFire1Pressed = true;
         }
-        isEPressed = Input.GetKeyDown(KeyCode.E);
-        isQPressed = Input.GetKeyDown(KeyCode.Q);
+        isEPressed = Input.GetKey(KeyCode.E);
+        isQPressed = Input.GetKey(KeyCode.Q);
         shiftPressed = Input.GetKey(KeyCode.LeftShift);
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
