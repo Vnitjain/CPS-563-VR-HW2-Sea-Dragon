@@ -6,6 +6,7 @@ using Photon.Pun;
 //photon id : caded358-3968-4e21-957b-4e6d80e49f95
 public class SeaDragonMain : MonoBehaviourPunCallbacks
 {
+    private ProgressBar progressBar;
     public static bool isJumpKeyPressed;
     public static bool isFire1Pressed;
     public static bool shiftPressed;
@@ -23,6 +24,7 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        progressBar = FindObjectOfType<ProgressBar>();
         dragonRigidBodyObject = GetComponent<Rigidbody>();
         isJumpKeyPressed = false;
         jumpFlag = true;
@@ -76,16 +78,20 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
     }
 
     private void OnCollisionEnter(Collision collision)
+{
+    if (collision.gameObject.layer == 3)
     {
-        if (collision.gameObject.layer == 3)
+        jumpFlag = true;
+    }
+    else if (collision.gameObject.layer == 7) // Check if the collision is with a collectible object
+    {
+        Destroy(collision.gameObject);
+        
+        // Increment the progress bar only when colliding with a collectible object
+        if (progressBar != null)
         {
-            jumpFlag = true;
-        }
-        if (collision.gameObject.layer == 7)
-        {
-            isEating = true;
-            Destroy(collision.gameObject);
-            isEating = false;
+            progressBar.IncrementProgress();
         }
     }
+}
 }
