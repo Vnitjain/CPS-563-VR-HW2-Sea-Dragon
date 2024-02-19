@@ -3,17 +3,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Photon.Pun;
 
 /// <summary>
 /// Attach the script to the off screen indicator panel.
 /// </summary>
 [DefaultExecutionOrder(-1)]
-public class OffScreenIndicator : MonoBehaviour
+public class OffScreenIndicator : MonoBehaviourPunCallbacks
 {
     [Range(0.5f, 0.9f)]
     [Tooltip("Distance offset of the indicators from the centre of the screen")]
     [SerializeField] private float screenBoundOffset = 0.9f;
 
+    [SerializeField] private GameObject playerPrefab;
+    //[SerializeField] 
     private Camera mainCamera;
     private Vector3 screenCentre;
     private Vector3 screenBounds;
@@ -22,14 +25,39 @@ public class OffScreenIndicator : MonoBehaviour
 
     public static Action<Target, bool> TargetStateChanged;
 
+    
     void Awake()
+    {
+        if (playerPrefab == null)
+        {
+            Debug.LogError("Player prefab reference is not set.");
+            return;
+        }
+
+        // Get the main camera from the player prefab
+        mainCamera = playerPrefab.GetComponentInChildren<Camera>();
+
+        if (mainCamera == null)
+        {
+            Debug.LogError("Main camera not found as a child of the player prefab.");
+            return;
+        }
+
+        // Now you can use 'mainCamera' as needed
+        screenCentre = new Vector3(Screen.width, Screen.height, 0) / 2;
+        screenBounds = screenCentre * screenBoundOffset;
+        TargetStateChanged += HandleTargetStateChanged;
+    }
+
+
+/*    void Awake()
     {
         mainCamera = Camera.main;
         screenCentre = new Vector3(Screen.width, Screen.height, 0) / 2;
         screenBounds = screenCentre * screenBoundOffset;
         TargetStateChanged += HandleTargetStateChanged;
     }
-
+*/
     void LateUpdate()
     {
         DrawIndicators();

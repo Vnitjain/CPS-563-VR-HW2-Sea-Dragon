@@ -875,7 +875,7 @@ Transform:
   m_GameObject: {fileID: 2324544746236901307}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.03304179, z: -0, w: 0.99945396}
-  m_LocalPosition: {x: -0.73053837, y: 2, z: -2.9096935}
+  m_LocalPosition: {x: -0.73053855, y: 2, z: -2.9096935}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1293,6 +1293,15 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: isTabPressed
+  - Type: 4
+    SynchronizeType: 0
+    Name: isQPressed
+  - Type: 4
+    SynchronizeType: 0
+    Name: isEPressed
+  - Type: 4
+    SynchronizeType: 0
+    Name: isEating
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -1467,8 +1476,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3226096264759659166}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.28861275, y: 0.08596976, z: -0.026029546, w: 0.95322317}
-  m_LocalPosition: {x: -0.0000035509033, y: 0, z: -0.000005013848}
+  m_LocalRotation: {x: 0.28861275, y: 0.08596981, z: -0.026029563, w: 0.95322317}
+  m_LocalPosition: {x: 0.0000015219955, y: 0, z: -0.000009456869}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2120,8 +2129,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5570222471773208913}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25379646, y: 0.086858526, z: -0.022889517, w: 0.9630779}
-  m_LocalPosition: {x: -0.000001924138, y: 0, z: -0.0000025167656}
+  m_LocalRotation: {x: 0.25379646, y: 0.0868586, z: -0.02288954, w: 0.9630779}
+  m_LocalPosition: {x: 0.0000012070565, y: 0, z: -0.000004698909}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2391,8 +2400,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6869444185577030269}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27122632, y: 0.08642897, z: -0.02446149, w: 0.95831525}
-  m_LocalPosition: {x: -0.000001924138, y: 0, z: -0.0000025167656}
+  m_LocalRotation: {x: 0.27122635, y: 0.086429045, z: -0.024461495, w: 0.9583152}
+  m_LocalPosition: {x: 0.0000012070565, y: 0, z: -0.000004698909}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3120,6 +3129,8 @@ GameObject:
   - component: {fileID: 4536340455481529882}
   - component: {fileID: 7129247638583019206}
   - component: {fileID: 7596518527651209067}
+  - component: {fileID: 8428442656761161121}
+  - component: {fileID: 4810537755935241394}
   m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3135,8 +3146,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8974636247024400946}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27027, y: 0.118046254, z: -0.033409927, w: 0.95493615}
-  m_LocalPosition: {x: -0.73053837, y: 2, z: -2.9096935}
+  m_LocalRotation: {x: 0.27027, y: 0.11804633, z: -0.03340995, w: 0.95493615}
+  m_LocalPosition: {x: -0.73053855, y: 2, z: -2.9096935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3237,3 +3248,59 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8428442656761161121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8974636247024400946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 4810537755935241394}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &4810537755935241394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8974636247024400946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
