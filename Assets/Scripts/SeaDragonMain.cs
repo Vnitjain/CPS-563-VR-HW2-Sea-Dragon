@@ -95,12 +95,15 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         }
         if (collision.gameObject.layer == 6)
         {
-            Vector3 gameObjectAttackDirection = collision.gameObject.transform.forward;
-            Vector3 pushDirection = -gameObjectAttackDirection;
-            float pushForce = 100f;
-            Rigidbody gameObjectRigidBody = collision.gameObject.GetComponent<Rigidbody>();
-            gameObjectRigidBody.AddForce(pushDirection * pushForce, ForceMode.Impulse);
-            Debug.Log("Hitt");
+            if (!view.IsMine)
+            {
+                Vector3 gameObjectAttackDirection = collision.gameObject.transform.forward;
+                Vector3 pushDirection = -gameObjectAttackDirection;
+                float pushForce = 100f;
+                Rigidbody gameObjectRigidBody = collision.gameObject.GetComponent<Rigidbody>();
+                gameObjectRigidBody.AddForce(pushDirection * pushForce, ForceMode.Impulse);
+                Debug.Log("Hitt");
+            }
         }
     }
 }
