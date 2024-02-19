@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class EmitFireParticles : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private ParticleSystem particleSys;
+    [SerializeField] private Transform targetObject;
+    private ParticleSystem.EmitParams emitParameters;
+    private void Start()
     {
 
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if (particleSys != null && targetObject != null)
+        {
+            // Calculate world position based on target object and offset
+            Vector3 worldPosition = targetObject.position;
+
+            emitParameters = new ParticleSystem.EmitParams();
+            emitParameters.startSize = 0.5f;
+            emitParameters.position = targetObject.position;
+
+            // Emit particles directly, using default lifetime
+            particleSys.Emit(emitParameters, 1000);
+        }
+        else
+        {
+            Debug.LogError("Please assign Particle System and Target Object in the Inspector!");
+        }
 
     }
 }

@@ -78,20 +78,29 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
     }
 
     private void OnCollisionEnter(Collision collision)
-{
-    if (collision.gameObject.layer == 3)
     {
-        jumpFlag = true;
-    }
-    else if (collision.gameObject.layer == 7) // Check if the collision is with a collectible object
-    {
-        Destroy(collision.gameObject);
-        
-        // Increment the progress bar only when colliding with a collectible object
-        if (progressBar != null)
+        if (collision.gameObject.layer == 3)
         {
-            progressBar.IncrementProgress();
+            jumpFlag = true;
+        }
+        else if (collision.gameObject.layer == 7) // Check if the collision is with a collectible object
+        {
+            Destroy(collision.gameObject);
+
+            // Increment the progress bar only when colliding with a collectible object
+            if (progressBar != null)
+            {
+                progressBar.IncrementProgress();
+            }
+        }
+        if (collision.gameObject.layer == 6)
+        {
+            Vector3 gameObjectAttackDirection = collision.gameObject.transform.forward;
+            Vector3 pushDirection = -gameObjectAttackDirection;
+            float pushForce = 10f;
+            Rigidbody gameObjectRigidBody = collision.gameObject.GetComponent<Rigidbody>();
+            gameObjectRigidBody.AddForce(pushDirection * pushForce, ForceMode.Impulse);
+            Debug.Log("Hitt");
         }
     }
-}
 }
