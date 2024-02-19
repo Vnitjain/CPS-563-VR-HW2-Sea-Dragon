@@ -1,55 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
+using Photon.Pun;
 
-public class SeaDragonMovement : MonoBehaviour
+public class SeaDragonMovement : MonoBehaviourPunCallbacks
 {
     Animator dragonAnimator;
-    Rigidbody dragonRigidBody;
 
     void Start()
     {
+        if (!photonView.IsMine)
+        {
+            enabled = false;
+        }
         dragonAnimator = GetComponent<Animator>();
-        dragonRigidBody = GetComponent<Rigidbody>();
-
-        dragonAnimator.SetBool("Stand", true);
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        if (!photonView.IsMine)
+            return;
         JumpUpdates();
         MovementUpdates();
         AttackUpdates();
+        PowerUpUpdated();
+        FlyUpdates();
     }
+
+    void PowerUpUpdated()
+    {
+        dragonAnimator.SetBool("isEating", SeaDragonMain.isEating);
+    }
+
+    void FlyUpdates()
+    {
+    }
+
     void MovementUpdates()
     {
-        dragonAnimator.SetBool("Stand", dragonAnimator.GetFloat("Vertical") == 0 && dragonAnimator.GetFloat("Horizontal") == 0);
-        dragonAnimator.SetFloat("Vertical", SeaDragonMain.verticalInput);
-        dragonAnimator.SetFloat("Horizontal", SeaDragonMain.horizontalInput);
+        if (!photonView.IsMine)
+            return;
+        dragonAnimator.SetBool("isWalkingVerticalForward", SeaDragonMain.verticalInput > 0);
+        dragonAnimator.SetBool("isWalkingVerticalBack", SeaDragonMain.verticalInput < 0);
+        dragonAnimator.SetBool("isWalkingHorizontalLeft", SeaDragonMain.horizontalInput < 0);
+        dragonAnimator.SetBool("isWalkingHorizontalRight", SeaDragonMain.horizontalInput > 0);
+        dragonAnimator.SetBool("isShiftPressed", SeaDragonMain.shiftPressed);
     }
+
     void JumpUpdates()
     {
-        dragonAnimator.SetBool("Jump", SeaDragonMain.isJumpKeyPressed);
-        dragonAnimator.SetBool("Grounded", SeaDragonMain.isGrounded);
+        if (!photonView.IsMine)
+            return;
+        dragonAnimator.SetBool("isJumpPressed", SeaDragonMain.isJumpKeyPressed);
     }
+
     void AttackUpdates()
     {
-        if (SeaDragonMain.isFire1Pressed)
-        {
-            dragonAnimator.SetBool("Attack2", true);
-            dragonAnimator.SetInteger("DragoInt", 2);
-            dragonAnimator.SetBool("Attack1", true);
-            dragonAnimator.SetInteger("ActionID", -1);
-        }
-        else
-        {
-            dragonAnimator.SetBool("Attack2", false);
-            dragonAnimator.SetInteger("DragoInt", 0);
-            dragonAnimator.SetBool("Attack1", false);
-            dragonAnimator.SetInteger("ActionID", -1);
-            dragonAnimator.SetBool("Attack1", false);
-        }
-
+        if (!photonView.IsMine)
+            return;
+        dragonAnimator.SetBool("isAttack1Pressed", SeaDragonMain.isFire1Pressed);
+        dragonAnimator.SetBool("isQPressed", SeaDragonMain.isQPressed);
+        dragonAnimator.SetBool("isEPressed", SeaDragonMain.isEPressed);
     }
 }
