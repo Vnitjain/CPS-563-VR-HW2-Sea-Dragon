@@ -97,7 +97,7 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         {
             Vector3 gameObjectAttackDirection = collision.gameObject.transform.forward;
             Vector3 pushDirection = -gameObjectAttackDirection;
-            float pushForce = 10f;
+            float pushForce = 100f;
             Rigidbody gameObjectRigidBody = collision.gameObject.GetComponent<Rigidbody>();
             gameObjectRigidBody.AddForce(pushDirection * pushForce, ForceMode.Impulse);
             Debug.Log("Hitt");
