@@ -11,7 +11,9 @@ public class ObjectDestructionPhoton : MonoBehaviourPunCallbacks
         {
             for (int i = 0; i < currentGameObjects.Count; i++)
             {
-                Destroy(currentGameObjects[i]);
+                GameObject currentGameObject = currentGameObjects[i];
+                if (currentGameObject != null)
+                    Destroy(currentGameObject);
             }
         }
     }

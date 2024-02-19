@@ -1070,7 +1070,6 @@ GameObject:
   - component: {fileID: -4153073422937306764}
   - component: {fileID: -2242006120733599504}
   - component: {fileID: 8918622635789297941}
-  - component: {fileID: 6785497861889782271}
   - component: {fileID: 8948839698540079756}
   m_Layer: 6
   m_Name: Dragon
@@ -1310,20 +1309,6 @@ MonoBehaviour:
     LayerIndex: 1
   - SynchronizeType: 0
     LayerIndex: 2
---- !u!114 &6785497861889782271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2916919833202865989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc1ebd59f37f541a49ba2abf557a0f93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentGameObjects:
-  - {fileID: 0}
 --- !u!114 &8948839698540079756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1336,7 +1321,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756fabd068bb645139d7ff08453f32c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freeLook: {fileID: 0}
+  freeLook: {fileID: 8872982323134149428, guid: 4fefa436f106f4d0d86a0e9f64760128, type: 3}
+  dragonGameObject: {fileID: 2916919833202865989}
 --- !u!1 &3213466867019924135
 GameObject:
   m_ObjectHideFlags: 0
