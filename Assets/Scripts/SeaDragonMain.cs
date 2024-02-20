@@ -38,7 +38,7 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         isEating = false;
         isDancing = false;
         view = GetComponent<PhotonView>();
-        powerupCount = 2;
+        powerupCount = 0;
 
         if (!view.IsMine)
         {
@@ -91,16 +91,19 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         }
         if (collision.gameObject.layer == 7) // Check if the collision is with a collectible object
         {
-            isEating = true;
             powerupCount++;
             Destroy(collision.gameObject);
-            Invoke("StopEating", 0.1f);
             if (powerupCount >= 4)
             {
                 isDancing = true;
                 WinText = GameObject.FindObjectOfType<TMP_Text>();
                 WinText.text = "You Win!!!";
                 Invoke("StopDancing", 2);
+            }
+            else
+            {
+                isEating = true;
+                Invoke("StopEating", 0.1f);
             }
             // Increment the progress bar only when colliding with a collectible object
             if (progressBar != null)
