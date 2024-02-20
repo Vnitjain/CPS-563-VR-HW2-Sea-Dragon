@@ -95,6 +95,8 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         {
             // isDead = true;
             // Invoke("StopDeadAnimation", 0.1f);
+            // WinText = GameObject.FindObjectOfType<TMP_Text>();
+            // WinText.text = "You Lose!!!";
             powerupCount++;
             Destroy(collision.gameObject);
             if (powerupCount >= 4)

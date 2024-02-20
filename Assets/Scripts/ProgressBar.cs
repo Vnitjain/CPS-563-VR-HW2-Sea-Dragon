@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
     public Slider slider;
-    public int maxProgress = 10;
+    public int maxProgress = 4;
     private int currentProgress = 0;
 
     private void Start()
