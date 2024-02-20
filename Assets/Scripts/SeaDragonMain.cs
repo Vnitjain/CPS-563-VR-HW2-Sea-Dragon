@@ -15,6 +15,7 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
     public static bool isEPressed;
     public static bool isEating;
     public static bool isDancing;
+    public static bool isDead;
 
 
     private Rigidbody dragonRigidBodyObject;
@@ -37,6 +38,7 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         isEPressed = false;
         isEating = false;
         isDancing = false;
+        isDead = false;
         view = GetComponent<PhotonView>();
         powerupCount = 0;
 
@@ -91,6 +93,8 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         }
         if (collision.gameObject.layer == 7) // Check if the collision is with a collectible object
         {
+            // isDead = true;
+            // Invoke("StopDeadAnimation", 0.1f);
             powerupCount++;
             Destroy(collision.gameObject);
             if (powerupCount >= 4)
@@ -120,5 +124,9 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
     private void StopEating()
     {
         isEating = false;
+    }
+    private void StopDeadAnimation()
+    {
+        isDead = false;
     }
 }

@@ -30,11 +30,8 @@ public class SeaDragonMovement : MonoBehaviourPunCallbacks
 
     void WinOrLose()
     {
-        if (SeaDragonMain.isDancing)
-        {
-            Debug.Log("dancing");
-        }
         dragonAnimator.SetBool("isDancing", SeaDragonMain.isDancing);
+        dragonAnimator.SetBool("isDead", SeaDragonMain.isDead);
     }
 
     void PowerUpUpdated()
