@@ -14,6 +14,8 @@ public class SeaDragonAudioController : MonoBehaviour
     {
         sounds = new Dictionary<string, AudioClip>();
         sounds.Add("fire1", Resources.Load<AudioClip>("dragon fire breath"));
+        sounds.Add("eating", Resources.Load<AudioClip>("eating sound"));
+
     }
 
     public void PlaySound(string eventName)
@@ -39,6 +41,10 @@ public class SeaDragonAudioController : MonoBehaviour
         if (SeaDragonMain.isFire1Pressed)
         {
             PlaySound("fire1");
+        }
+        if (SeaDragonMain.isEating)
+        {
+            PlaySound("eating");
         }
     }
 }
