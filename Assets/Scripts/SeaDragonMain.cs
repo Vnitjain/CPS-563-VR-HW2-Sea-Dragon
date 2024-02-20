@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
 
 //photon id : caded358-3968-4e21-957b-4e6d80e49f95
 public class SeaDragonMain : MonoBehaviourPunCallbacks
@@ -20,6 +21,8 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
     private bool jumpFlag;
     public static float verticalInput;
     public static float horizontalInput;
+    private int powerupCount;
+    private TMP_Text WinText;
     PhotonView view;
 
     void Start()
@@ -33,6 +36,7 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         isEPressed = false;
         isEating = false;
         view = GetComponent<PhotonView>();
+        powerupCount = 0;
 
         if (!view.IsMine)
         {
@@ -78,20 +82,25 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
     }
 
     private void OnCollisionEnter(Collision collision)
-{
-    if (collision.gameObject.layer == 3)
     {
-        jumpFlag = true;
-    }
-    else if (collision.gameObject.layer == 7) // Check if the collision is with a collectible object
-    {
-        Destroy(collision.gameObject);
-        
-        // Increment the progress bar only when colliding with a collectible object
-        if (progressBar != null)
+        if (collision.gameObject.layer == 3)
         {
-            progressBar.IncrementProgress();
+            jumpFlag = true;
+        }
+        if (collision.gameObject.layer == 7) // Check if the collision is with a collectible object
+        {
+            powerupCount++;
+            Destroy(collision.gameObject);
+            if (powerupCount >= 2)
+            {
+                WinText = GameObject.FindObjectOfType<TMP_Text>();
+                WinText.text = "You Win!!!";
+            }
+            // Increment the progress bar only when colliding with a collectible object
+            if (progressBar != null)
+            {
+                progressBar.IncrementProgress();
+            }
         }
     }
-}
 }
