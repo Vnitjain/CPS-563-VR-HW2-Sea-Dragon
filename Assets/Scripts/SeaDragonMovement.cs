@@ -25,6 +25,16 @@ public class SeaDragonMovement : MonoBehaviourPunCallbacks
         AttackUpdates();
         PowerUpUpdated();
         FlyUpdates();
+        WinOrLose();
+    }
+
+    void WinOrLose()
+    {
+        if (SeaDragonMain.isDancing)
+        {
+            Debug.Log("dancing");
+        }
+        dragonAnimator.SetBool("isDancing", SeaDragonMain.isDancing);
     }
 
     void PowerUpUpdated()

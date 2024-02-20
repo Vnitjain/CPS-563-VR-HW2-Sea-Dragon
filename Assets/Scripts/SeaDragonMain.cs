@@ -14,6 +14,7 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
     public static bool isQPressed;
     public static bool isEPressed;
     public static bool isEating;
+    public static bool isDancing;
 
 
     private Rigidbody dragonRigidBodyObject;
@@ -35,8 +36,9 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         isQPressed = false;
         isEPressed = false;
         isEating = false;
+        isDancing = false;
         view = GetComponent<PhotonView>();
-        powerupCount = 0;
+        powerupCount = 2;
 
         if (!view.IsMine)
         {
@@ -89,12 +91,16 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
         }
         if (collision.gameObject.layer == 7) // Check if the collision is with a collectible object
         {
+            isEating = true;
             powerupCount++;
             Destroy(collision.gameObject);
-            if (powerupCount >= 2)
+            Invoke("StopEating", 2);
+            if (powerupCount >= 4)
             {
+                isDancing = true;
                 WinText = GameObject.FindObjectOfType<TMP_Text>();
                 WinText.text = "You Win!!!";
+                Invoke("StopDancing", 2);
             }
             // Increment the progress bar only when colliding with a collectible object
             if (progressBar != null)
@@ -102,5 +108,14 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
                 progressBar.IncrementProgress();
             }
         }
+    }
+
+    private void StopDancing()
+    {
+        isDancing = false;
+    }
+    private void StopEating()
+    {
+        isEating = false;
     }
 }
