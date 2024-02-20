@@ -94,7 +94,7 @@ public class SeaDragonMain : MonoBehaviourPunCallbacks
             isEating = true;
             powerupCount++;
             Destroy(collision.gameObject);
-            Invoke("StopEating", 2);
+            Invoke("StopEating", 0.1f);
             if (powerupCount >= 4)
             {
                 isDancing = true;
